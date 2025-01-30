@@ -79,5 +79,15 @@ module.exports = sequelize => {
 
   };
   const UsersModel = sequelize.define("users_model", attributes, options);
+  UsersModel.associate = function (models) {
+
+    UsersModel.hasMany(models.reviews_model, {
+      foreignKey: 'user_id'
+    });
+
+    UsersModel.hasMany(models.orders_model, {
+      foreignKey: 'user_id'
+    });
+  };
   return UsersModel;
 };

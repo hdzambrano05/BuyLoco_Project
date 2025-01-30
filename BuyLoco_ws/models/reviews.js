@@ -85,5 +85,18 @@ module.exports = sequelize => {
     schema: 'public'
   };
   const ReviewsModel = sequelize.define("reviews_model", attributes, options);
+  
+  ReviewsModel.associate = function (models) {
+    ReviewsModel.belongsTo(models.users_model, {
+      foreignKey: 'user_id'
+    });
+
+    ReviewsModel.belongsTo(models.products_model, {
+      foreignKey: 'product_id'
+    });
+
+
+  };
+
   return ReviewsModel;
 };

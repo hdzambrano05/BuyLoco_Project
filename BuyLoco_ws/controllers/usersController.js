@@ -3,6 +3,9 @@ const { Op } = require('sequelize');
 
 
 const users = require('../models').users_model;
+const orders = require('../models').orders_model;
+const reviews = require('../models').reviews_model;
+
 module.exports = {
 
     list(req, res) {
@@ -108,6 +111,20 @@ module.exports = {
                     .catch((error) => res.status(400).send(error));
             })
             .catch((error) => res.status(400).send(error));
+    },
+
+    listFull(req, res) {
+        return users
+            .findAll({
+                include: [{
+                    model: orders
+                },
+                {
+                    model: reviews
+                }]
+            })
+            .then((users) => res.status(200).send(users))
+            .catch((error) => { res.status(400).send(error); });
     },
 
 

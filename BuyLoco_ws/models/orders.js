@@ -72,5 +72,18 @@ module.exports = sequelize => {
     schema: 'public'
   };
   const OrdersModel = sequelize.define("orders_model", attributes, options);
+
+  OrdersModel.associate = function (models) {
+
+
+    OrdersModel.hasMany(models.orderitems_model, {
+      foreignKey: 'order_id'
+    });
+
+    OrdersModel.belongsTo(models.users_model, {
+      foreignKey: 'user_id'
+    });
+  };
+
   return OrdersModel;
 };

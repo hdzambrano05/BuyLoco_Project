@@ -51,5 +51,13 @@ module.exports = sequelize => {
     schema: 'public'
   };
   const CategoriesModel = sequelize.define("categories_model", attributes, options);
+
+  CategoriesModel.associate = function (models) {
+    CategoriesModel.hasMany(models.products_model, {
+      foreignKey: 'category_id'
+    });
+  };
+
+
   return CategoriesModel;
 };

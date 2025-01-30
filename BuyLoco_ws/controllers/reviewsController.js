@@ -1,8 +1,8 @@
-const { RelationshipType } = require('sequelize/lib/errors/database/foreign-key-constraint-error');
-const usersController = require('./usersController');
-const { add } = require('./usersController');
 
 const reviews = require('../models').reviews_model;
+const users = require('../models').users_model;
+const products = require('../models').products_model;
+
 module.exports = {
     list(req, res) {
         return reviews
@@ -79,6 +79,20 @@ module.exports = {
                     .catch((error) => res.status(400).send(error));
             })
             .catch((error) => res.status(400).send(error));
+    },
+
+    listFull(req, res) {
+        return reviews
+            .findAll({
+                include: [{
+                    model: users
+                },
+                {
+                    model: products
+                }]
+            })
+            .then((reviews) => res.status(200).send(reviews))
+            .catch((error) => { res.status(400).send(error); });
     },
 
 

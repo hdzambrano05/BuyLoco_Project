@@ -99,5 +99,21 @@ module.exports = sequelize => {
     schema: 'public'
   };
   const ProductsModel = sequelize.define("products_model", attributes, options);
+  ProductsModel.associate = function (models) {
+
+    ProductsModel.hasMany(models.orderitems_model, {
+      foreignKey: 'product_id'
+    });
+
+    ProductsModel.hasMany(models.reviews_model, {
+      foreignKey: 'product_id'
+    });
+
+    ProductsModel.belongsTo(models.categories_model, {
+      foreignKey: 'category_id'
+    });
+
+  };
+
   return ProductsModel;
 };
