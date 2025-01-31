@@ -1,0 +1,48 @@
+<nav class="navbar">
+    <div class="navbar-container">
+        <!-- Logo -->
+        <a class="navbar-logo" href="/">
+            <img src="assets/images/logo.PNG" alt="BuyLoco Logo" />
+        </a>
+
+        <!-- Menú de Navegación -->
+        <ul class="navbar-menu">
+            <!-- Mostrar estas opciones solo si el usuario está autenticado -->
+            <ng-container *ngIf="isLoggedIn">
+                <li class="navbar-item"><a href="/" class="navbar-link">Inicio</a></li>
+                <li class="navbar-item">
+                    <a href="/productos" class="navbar-link">Productos</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="/ofertas" class="navbar-link">Ofertas</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="/contacto" class="navbar-link">Contacto</a>
+                </li>
+            </ng-container>
+
+            <!-- Mostrar estas opciones solo si el usuario NO está autenticado -->
+            <ng-container *ngIf="!isLoggedIn">
+                <li class="navbar-item">
+                    <a href="/login" class="navbar-link">Iniciar Sesión</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="/register" class="navbar-link">Registrarse</a>
+                </li>
+            </ng-container>
+        </ul>
+
+        <!-- Carrito de Compras (solo si el usuario está autenticado) -->
+        <div class="navbar-cart" *ngIf="isLoggedIn">
+            <a href="/carrito" class="cart-link">
+                <i class="material-icons">shopping_cart</i>
+                <span class="cart-count">3</span>
+            </a>
+        </div>
+
+        <!-- Botón de Cerrar Sesión (solo si el usuario está autenticado) -->
+        <div *ngIf="isLoggedIn" class="navbar-logout">
+            <button class="logout-button" (click)="logout()">Cerrar Sesión</button>
+        </div>
+    </div>
+</nav>

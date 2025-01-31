@@ -1,0 +1,49 @@
+<div class="login-container">
+    <div class="login-box">
+        <div class="login-header">
+            <h2>Iniciar Sesión</h2>
+            <p>¡Bienvenido de nuevo a <strong>BuyLoco</strong>!</p>
+        </div>
+        <form class="login-form" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+            <!-- Campo de correo electrónico -->
+            <div class="form-group">
+                <label for="email">Correo Electrónico</label>
+                <div class="input-container">
+                    <i class="fas fa-envelope input-icon"></i> <!-- Ícono de FontAwesome -->
+                    <input type="email" id="email" formControlName="email" class="form-control"
+                        placeholder="Ingresa tu correo" required />
+                </div>
+                <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error-message">
+                    Por favor, ingresa un correo válido.
+                </div>
+            </div>
+
+            <!-- Campo de contraseña -->
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <div class="input-container">
+                    <i class="fas fa-lock input-icon"></i> <!-- Ícono de FontAwesome -->
+                    <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password"
+                        class="form-control" placeholder="Ingresa tu contraseña" required />
+                    <button type="button" class="password-toggle" (click)="togglePasswordVisibility()">
+                        <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+                        <!-- Ícono para mostrar/ocultar -->
+                    </button>
+                </div>
+                <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+                    class="error-message">
+                    La contraseña debe tener al menos 6 caracteres.
+                </div>
+            </div>
+
+            <!-- Botón de ingreso -->
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="loginForm.invalid">Ingresar</button>
+        </form>
+        <div class="login-footer">
+            <p>¿No tienes una cuenta? <a href="/register">Regístrate aquí</a></p>
+        </div>
+        <div *ngIf="errorMessage" class="alert alert-danger">
+            {{ errorMessage }}
+        </div>
+    </div>
+</div>

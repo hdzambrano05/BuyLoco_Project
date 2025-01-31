@@ -128,6 +128,42 @@ module.exports = {
     },
 
 
+    login(req, res) {
+        const { email, password } = req.body;
+
+        // Buscar usuario por email o username
+        users.findOne({
+            where: {
+                [Op.or]: [
+                    { email: email },
+                ]
+            }
+        })
+            .then(user => {
+                // Verificar si el usuario existe
+                if (!user) {
+                    return res.status(404).send({ message: 'Usuario no encontrado' });
+                }
+
+                // Verificar la contraseña
+                return bcrypt.compare(password, user.password)
+                    .then(isMatch => {
+                        if (!isMatch) {
+                            return res.status(401).send({ message: 'Contraseña incorrecta' });
+                        }
+
+                        // Devolver información del usuario (sin la contraseña)
+                        const { password: _, ...userData } = user.dataValues; // Excluir la contraseña
+                        return res.status(200).send(userData); // O devuelve solo lo que necesites
+                    });
+            })
+            .catch(error => {
+                console.error('Error en el inicio de sesión:', error);
+                return res.status(500).send({ message: 'Error del servidor' });
+            });
+    },
+
+
 
 
 };

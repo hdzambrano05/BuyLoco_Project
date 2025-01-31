@@ -1,0 +1,169 @@
+/* Contenedor principal */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+    /* Fondo en tonos grises claros */
+    overflow: hidden;
+}
+
+/* Caja del login */
+.login-box {
+    background: rgba(255, 255, 255, 0.98);
+    /* Fondo blanco con transparencia */
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+    /* Sombra más pronunciada */
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    /* Sombra más intensa al hacer hover */
+}
+
+/* Encabezado */
+.login-header h2 {
+    margin-bottom: 0.5rem;
+    color: #333;
+    /* Color oscuro para el título */
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+.login-header p {
+    color: #666;
+    /* Color gris para el subtítulo */
+    font-size: 0.95rem;
+}
+
+/* Formulario */
+.login-form .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+/* Contenedor de inputs con íconos */
+.input-container {
+    position: relative;
+}
+
+.login-form .form-control {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 40px;
+    /* Espacio para el ícono */
+    border: 1px solid #ddd;
+    /* Borde gris claro */
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-form .form-control:focus {
+    border-color: #6d4c41;
+    /* Café oscuro al enfocar */
+    box-shadow: 0 0 15px rgba(109, 76, 65, 0.2);
+    /* Sombra suave al enfocar */
+    outline: none;
+}
+
+/* Iconos en los inputs */
+.input-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    /* Color gris para los íconos */
+    font-size: 1.2rem;
+}
+
+/* Mensajes de error */
+.error-message {
+    color: #ff4444;
+    /* Color rojo para los mensajes de error */
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+/* Botón de ingreso */
+.btn-primary {
+    background-color: #6d4c41;
+    /* Café oscuro */
+    border: none;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    color: white;
+    /* Texto en blanco para contrastar */
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #4e342e;
+    /* Café más oscuro al hacer hover */
+    transform: scale(1.02);
+}
+
+/* Pie de página */
+.login-footer {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #666;
+    /* Color gris para el texto */
+}
+
+.login-footer a {
+    color: #6d4c41;
+    /* Café oscuro para los enlaces */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.login-footer a:hover {
+    color: #4e342e;
+    /* Café más oscuro al hacer hover */
+}
+
+/* Botón para mostrar/ocultar contraseña */
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #888;
+    /* Color gris para el ícono */
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.password-toggle:hover {
+    color: #6d4c41;
+    /* Café oscuro al hacer hover */
+}
+
+/* Notificación de error general */
+.alert-danger {
+    background-color: #ffebee;
+    /* Fondo rojo claro */
+    color: #ff4444;
+    /* Texto rojo */
+    padding: 0.75rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    border: 1px solid #ff4444;
+    /* Borde rojo */
+}
