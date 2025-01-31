@@ -36,12 +36,12 @@ module.exports = {
                 price: req.body.price,
                 stock: req.body.stock,
                 category_id: req.body.category_id,
-                image_url: req.body.image_url,
-
+                image_url: req.file ? `/uploads/${req.file.filename}` : null, // Guarda la imagen si existe
             })
-            .then((products) => res.status(201).send(products))
+            .then((product) => res.status(201).send(product))
             .catch((error) => res.status(400).send(error));
     },
+
 
     update(req, res) {
         return products

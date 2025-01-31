@@ -1,0 +1,30 @@
+.card {
+    max-height: 400px; /* Limitar la altura de la tarjeta */
+    min-height: 350px; /* Asegura que todas las tarjetas tengan un tamaño uniforme */
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card img {
+    max-height: 150px; /* Ajustar la altura de la imagen para que sea más pequeña */
+    width: 100%; /* Asegura que la imagen ocupe todo el ancho disponible */
+    object-fit: contain; /* Asegura que la imagen se mantenga dentro del contenedor sin recortes */
+
+}
+
+.card-img-top {
+    border-radius: 15px;
+}
+
+.card-body {
+    border-radius: 15px;
+}
+
+.card-body:hover {
+    transform: translateY(-10px); /* Eleva la tarjeta cuando el mouse pasa sobre ella */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Aumenta la sombra para un efecto flotante */
+}

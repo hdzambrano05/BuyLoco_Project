@@ -1,0 +1,121 @@
+<!-- Sección Hero (Banner principal) -->
+<section class="hero-section text-light text-center py-5" style="background: linear-gradient(to right, #6e4b3a, #2a1c18);">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-4 animate__animated animate__fadeInUp">Bienvenido a BuyLoco</h1>
+        <p class="lead mb-4 animate__animated animate__fadeInUp animate__delay-1s">Tu tienda en línea favorita con los mejores productos.</p>
+        <a href="#productos" class="btn btn-dark btn-lg shadow-lg animate__animated animate__fadeInUp animate__delay-2s">
+            Explorar Productos <i class="bi bi-arrow-right-circle"></i>
+        </a>
+    </div>
+</section>
+
+
+<!-- Sección de Información de la Tienda -->
+<section class="about-section py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-4 mb-md-0">
+                <h2 class="fw-bold animate__animated animate__fadeInLeft">Sobre Nosotros</h2>
+                <p class="lead animate__animated animate__fadeInLeft animate__delay-1s">
+                    En BuyLoco nos dedicamos a ofrecerte los mejores productos al mejor precio.
+                    Nuestra misión es brindarte una experiencia de compra única y satisfactoria.
+                </p>
+                <a href="#" class="btn btn-outline-dark btn-lg animate__animated animate__fadeInLeft animate__delay-2s">
+                    Conoce Más <i class="bi bi-info-circle"></i>
+                </a>
+            </div>
+            <div class="col-md-6">
+                <img src="assets/images/logo.PNG" alt="Sobre Nosotros"
+                    class="img-fluid rounded shadow-lg animate__animated animate__fadeInRight">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sección de Productos Destacados -->
+<section id="productos" class="products-section py-5" style="background-color: #f9e6d7;">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5 animate__animated animate__fadeInUp">Productos Destacados</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4" *ngFor="let product of products">
+                <div class="card h-100 shadow-lg rounded-3 hover-shadow-lg animate__animated animate__fadeInUp animate__delay-1s" style="border: 1px solid #d1a58d;">
+                    <img [src]="imageUrl + product.image_url" alt="{{ product.name }}" class="card-img-top img-fluid rounded-top">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <h5 class="card-title fw-bold">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.description }}</p>
+                        <p class="text-dark fw-bold">${{ product.price }}</p>
+                        <button class="btn btn-dark btn-lg w-100 mt-auto">Añadir al Carrito <i class="bi bi-cart-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sección de Testimonios -->
+<section class="testimonials-section py-5" style="background-color: #6e4b3a; color: #f8f9fa;">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5 animate__animated animate__fadeInUp">Lo que Dicen Nuestros Clientes</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-lg rounded-3 animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <p class="card-text">"¡Excelente servicio y productos de alta calidad!"</p>
+                        <p class="text-muted">- Cliente Satisfecho</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-lg rounded-3 animate__animated animate__fadeInUp animate__delay-1s">
+                    <div class="card-body">
+                        <p class="card-text">"La mejor tienda en línea que he usado. ¡Altamente recomendada!"</p>
+                        <p class="text-muted">- Otro Cliente</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-lg rounded-3 animate__animated animate__fadeInUp animate__delay-2s">
+                    <div class="card-body">
+                        <p class="card-text">"Entrega rápida y productos exactamente como se describen."</p>
+                        <p class="text-muted">- Cliente Feliz</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sección de Contacto -->
+<section class="contact-section bg-light text-dark py-5">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-4 animate__animated animate__fadeInUp">Contáctanos</h2>
+        <p class="text-center lead mb-5 animate__animated animate__fadeInUp animate__delay-1s">¿Tienes alguna pregunta? ¡No dudes en contactarnos!</p>
+        <form>
+            <div class="mb-3">
+                <input type="text" class="form-control shadow-sm rounded" placeholder="Nombre" required>
+            </div>
+            <div class="mb-3">
+                <input type="email" class="form-control shadow-sm rounded" placeholder="Correo Electrónico" required>
+            </div>
+            <div class="mb-3">
+                <textarea class="form-control shadow-sm rounded" rows="5" placeholder="Mensaje" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-dark btn-lg w-100">Enviar Mensaje <i class="bi bi-send"></i></button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>&copy; 2025 BuyLoco. Todos los derechos reservados.</p>
+    <!-- Redes sociales -->
+    <div>
+        <a href="#" class="text-white mx-3"><i class="bi bi-facebook fs-3"></i></a>
+        <a href="#" class="text-white mx-3"><i class="bi bi-twitter fs-3"></i></a>
+        <a href="#" class="text-white mx-3"><i class="bi bi-instagram fs-3"></i></a>
+        <a href="#" class="text-white mx-3"><i class="bi bi-linkedin fs-3"></i></a>
+    </div>
+</footer>
+
+<!-- Agregar animaciones y transiciones suaves -->
+
