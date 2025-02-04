@@ -6,25 +6,36 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private isLoggedInSubject = new BehaviorSubject<boolean>(false); // Estado de autenticación reactivo
-  public isLoggedIn$ = this.isLoggedInSubject.asObservable(); // Observable para suscribirse
+  private isLoggedInSubject = new BehaviorSubject<boolean>(this.checkLoginStatus());
+  public isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
-  // Método para iniciar sesión
-  login(): void {
-    this.isLoggedInSubject.next(true); // Actualiza el estado a "autenticado"
-    this.router.navigate(['/']); // Redirige al inicio después de iniciar sesión
+  login(id: string, name: string): void {
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('userId', id);
+    localStorage.setItem('username', name); // Almacena el nombre del usuario
+    this.isLoggedInSubject.next(true);
+    this.router.navigate(['/']);
   }
 
-  // Método para cerrar sesión
   logout(): void {
-    this.isLoggedInSubject.next(false); // Actualiza el estado a "no autenticado"
-    this.router.navigate(['/login']); // Redirige al login después de cerrar sesión
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('username');
+    this.isLoggedInSubject.next(false);
+    this.router.navigate(['/login']);
   }
 
-  // Método para verificar si el usuario está autenticado
-  isAuthenticated(): boolean {
-    return this.isLoggedInSubject.value; // Devuelve el valor actual del estado
+  getUserId(): string | null {
+    return localStorage.getItem('userId');
+  }
+
+  getUsername(): string | null {
+    return localStorage.getItem('username');
+  }
+
+  private checkLoginStatus(): boolean {
+    return localStorage.getItem('isLoggedIn') === 'true';
   }
 }

@@ -1,4 +1,4 @@
-<nav class="navbar">
+<nav class="navbar navbar-expand-lg">
     <div class="navbar-container">
         <!-- Logo -->
         <a class="navbar-logo" href="/">
@@ -7,42 +7,71 @@
 
         <!-- Menú de Navegación -->
         <ul class="navbar-menu">
-            <!-- Mostrar estas opciones solo si el usuario está autenticado -->
             <ng-container *ngIf="isLoggedIn">
-                <li class="navbar-item"><a href="/" class="navbar-link">Inicio</a></li>
                 <li class="navbar-item">
-                    <a href="/productos" class="navbar-link">Productos</a>
+                    <a href="/" class="navbar-link">
+                        <i class="fas fa-home"></i> Inicio
+                    </a>
                 </li>
                 <li class="navbar-item">
-                    <a href="/ofertas" class="navbar-link">Ofertas</a>
+                    <a href="/productos" class="navbar-link">
+                        <i class="fas fa-boxes"></i> Productos
+                    </a>
                 </li>
                 <li class="navbar-item">
-                    <a href="/contacto" class="navbar-link">Contacto</a>
+                    <a href="/ofertas" class="navbar-link">
+                        <i class="fas fa-tags"></i> Ofertas
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="/contacto" class="navbar-link">
+                        <i class="fas fa-envelope"></i> Contacto
+                    </a>
                 </li>
             </ng-container>
 
-            <!-- Mostrar estas opciones solo si el usuario NO está autenticado -->
             <ng-container *ngIf="!isLoggedIn">
                 <li class="navbar-item">
-                    <a href="/login" class="navbar-link">Iniciar Sesión</a>
+                    <a href="/login" class="navbar-link">
+                        <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                    </a>
                 </li>
                 <li class="navbar-item">
-                    <a href="/register" class="navbar-link">Registrarse</a>
+                    <a href="/register" class="navbar-link">
+                        <i class="fas fa-user-plus"></i> Registrarse
+                    </a>
                 </li>
             </ng-container>
         </ul>
 
-        <!-- Carrito de Compras (solo si el usuario está autenticado) -->
-        <div class="navbar-cart" *ngIf="isLoggedIn">
-            <a href="/carrito" class="cart-link">
-                <i class="material-icons">shopping_cart</i>
-                <span class="cart-count">3</span>
-            </a>
+        <!-- Menú de Usuario -->
+        <div class="navbar-user" *ngIf="isLoggedIn">
+            <div class="dropdown">
+                <button class="dropdown-toggle" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-user-circle navbar-user-icon"></i> Bienvenido, {{ username }}
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="userMenu">
+                    <li>
+                        <a class="dropdown-item" href="/profile">
+                            <i class="fas fa-user"></i> Ver Perfil
+                        </a>
+                    </li>
+                    <li>
+                        <button class="dropdown-item logout-button" (click)="logout()">
+                            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <!-- Icono del Carrito -->
+            <div class="navbar-cart">
+                <a href="/cart" class="cart-link">
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                    <span class="cart-count">3</span>
+                </a>
+            </div>
         </div>
 
-        <!-- Botón de Cerrar Sesión (solo si el usuario está autenticado) -->
-        <div *ngIf="isLoggedIn" class="navbar-logout">
-            <button class="logout-button" (click)="logout()">Cerrar Sesión</button>
-        </div>
+
     </div>
 </nav>

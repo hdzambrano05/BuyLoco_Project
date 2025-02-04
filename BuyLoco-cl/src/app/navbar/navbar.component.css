@@ -8,14 +8,19 @@
     top: 0;
     z-index: 1000;
     transition: background-color 0.3s ease;
+    width: 100%;
+    /* Asegura que la barra de navegación ocupe todo el ancho */
 }
 
+/* Contenedor de la barra de navegación */
 .navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
+    width: 100%;
+    /* Asegura que el contenedor ocupe todo el ancho */
+    padding: 0 2rem;
+    /* Agrega algo de espacio lateral */
 }
 
 /* Logo */
@@ -34,10 +39,11 @@
     display: flex;
     margin: 0;
     padding: 0;
+    gap: 5rem;
+    /* Aumenta el espacio entre los elementos */
 }
 
 .navbar-item {
-    margin-left: 2rem;
     position: relative;
 }
 
@@ -47,7 +53,7 @@
     font-size: 1rem;
     transition: color 0.3s ease, transform 0.3s ease;
     display: inline-block;
-    padding: 0.5rem 0;
+    padding: 0.2rem 0;
 }
 
 .navbar-link::after {
@@ -73,7 +79,6 @@
     transform: translateY(-3px);
 }
 
-/* Carrito de Compras */
 /* Carrito de Compras */
 .navbar-cart {
     position: absolute;
@@ -127,6 +132,82 @@
     background-color: #222;
     padding: 0.5rem 2rem;
 }
+
+/* Estilo del Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Botón del Dropdown */
+.dropdown-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown-toggle:hover {
+    color: #f39c12;
+    transform: translateY(-2px);
+}
+
+/* Menú del Dropdown */
+.dropdown-menu {
+    display: none;
+    /* Inicialmente oculto */
+    position: absolute;
+    background-color: #202325;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    top: 100%;
+    left: 0;
+    width: 200px;
+    z-index: 1000;
+    padding: 0.5rem 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Mostrar el Dropdown cuando se pasa el cursor */
+.dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+}
+
+/* Elementos del Dropdown */
+.dropdown-item {
+    color: white;
+    padding: 0.8rem 1rem;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Efecto Hover en los ítems del Dropdown */
+.dropdown-item:hover {
+    background-color: #f39c12;
+    color: white;
+}
+
+/* Flecha de desplegar (opcional) */
+.dropdown-toggle::after {
+    content: '\25BC';
+    /* Flecha hacia abajo */
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+/* Cambiar la dirección de la flecha cuando se abre el dropdown */
+.dropdown:hover .dropdown-toggle::after {
+    transform: rotate(180deg);
+}
+
+
+
 
 /* Animación de entrada */
 @keyframes fadeInDown {

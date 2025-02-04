@@ -20,14 +20,12 @@ export class UsersService {
     const ruta = `${environment.apiUrl}/users`; // Construye la URL correctamente
     return this.http.post(ruta, userData); // Envía el objeto de datos directamente
   }
-  
-  // Método para cerrar sesión (opcional)
-  logout(): void {
-    localStorage.removeItem('token'); // Elimina el token del localStorage
-  }
 
-  // Método para verificar si el usuario está autenticado (opcional)
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem('token'); // Verifica si existe un token en el localStorage
+  getUserById(userId: string): Observable<any> {
+    const url = `${environment.apiUrl}/users/${userId}`;
+    return this.http.get<any>(url); // Realiza una solicitud GET para obtener el usuario por su ID
   }
+  
+
+
 }

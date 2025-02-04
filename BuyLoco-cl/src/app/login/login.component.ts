@@ -39,19 +39,25 @@ export class LoginComponent {
       this.usersService.login(email, password).subscribe(
         (response) => {
           console.log('Login exitoso:', response);
-          if (response.token) {
-            localStorage.setItem('token', response.token);
+
+          const userId = response.id;       // Aseguramos que se use el campo correcto
+          const username = response.name;   // Aquí tomamos el nombre del usuario
+
+          if (userId && username) {
+            this.authService.login(userId, username); // Pasamos los datos al AuthService
+            this.router.navigate(['/']);
+          } else {
+            this.errorMessage = 'La respuesta del servidor es inválida.';
           }
-          this.authService.login()
-          this.router.navigate(['/']);
         },
         (error) => {
           console.error('Error en el login:', error);
-          this.errorMessage = error.error.message || 'Error en el inicio de sesión';
+          this.errorMessage = error.error.message || 'Error en el inicio de sesión.';
         }
       );
     } else {
       this.errorMessage = 'Por favor, completa el formulario correctamente.';
     }
   }
-}
+
+}  
