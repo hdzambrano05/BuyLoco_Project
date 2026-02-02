@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service';
 import { UsersService } from '../services/users/users.service';
+import { CartService } from '../services/cart/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +13,11 @@ export class NavbarComponent implements OnInit {
   isLoggedIn = false;
   username: string | null = '';
 
-  constructor(private authService: AuthService, private usersService: UsersService) {}
+  constructor(
+    private authService: AuthService,
+    private usersService: UsersService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.authService.isLoggedIn$.subscribe((status) => {
@@ -39,5 +44,9 @@ export class NavbarComponent implements OnInit {
 
   logout(): void {
     this.authService.logout();
+  }
+
+  get cartItemCount$() {
+    return this.cartService.itemCount$;
   }
 }

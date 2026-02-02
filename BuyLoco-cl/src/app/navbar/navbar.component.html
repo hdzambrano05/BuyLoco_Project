@@ -63,13 +63,14 @@
                     </li>
                 </ul>
             </div>
-            <!-- Icono del Carrito -->
-            <div class="navbar-cart">
-                <a href="/cart" class="cart-link">
-                    <i class="fas fa-shopping-cart cart-icon"></i>
-                    <span class="cart-count">3</span>
-                </a>
-            </div>
+        </div>
+
+        <!-- Icono del Carrito -->
+        <div class="navbar-cart">
+            <a routerLink="/cart" class="cart-link">
+                <i class="fas fa-shopping-cart cart-icon"></i>
+                <span class="cart-count">{{ cartItemCount$ | async }}</span>
+            </a>
         </div>
 
 

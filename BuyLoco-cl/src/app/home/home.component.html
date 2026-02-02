@@ -44,7 +44,9 @@
                         <h5 class="card-title fw-bold">{{ product.name }}</h5>
                         <p class="card-text">{{ product.description }}</p>
                         <p class="text-dark fw-bold">${{ product.price }}</p>
-                        <button class="btn btn-dark btn-lg w-100 mt-auto">Añadir al Carrito <i class="bi bi-cart-plus"></i></button>
+                        <button class="btn btn-dark btn-lg w-100 mt-auto" (click)="addToCart(product)">
+                            Añadir al Carrito <i class="bi bi-cart-plus"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -118,4 +120,3 @@
 </footer>
 
 <!-- Agregar animaciones y transiciones suaves -->
-
